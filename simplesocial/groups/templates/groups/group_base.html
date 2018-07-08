@@ -1,21 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="container">
-        <div class="row">
+<div class="container">
+    <div class="row">
 
-            {% block pregroup %}
+        {% block pregroup %} {% endblock pregroup %}
+        {% block group_content %} {% endblock group_content %}
+        {% block postgroup %} {% endblock postgroup %}
 
-            {% endblock pregroup %}
-
-            {% block group_content %}
-
-            {% endblock group_content %}
-
-            {% block postgroup %}
-
-            {% endblock postgroup %}
-
-        </div>
-    </div>    
+    </div>
+</div>
 {% endblock content %}
