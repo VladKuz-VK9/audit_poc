@@ -3,11 +3,10 @@
 {% block pre_post_content %}
 <div class="col-md-4">
     {% if request.user.is_authenticated %}
-    <div class="card shadow rounded">
+    <div class="card">
         <div class="card-body content">
             <h5 class="card-title">Your Groups</h5>
             <ul class="list-unstyled">
-
                 {% for member_group in get_user_groups %}
                 <li class="list-group-item li-with-bullet">
                     <a href="{% url 'groups:single' slug=member_group.group.slug %}"></a>
@@ -18,7 +17,7 @@
         </div>
     </div>
     {% endif %}
-    <div class="card shadow rounded">
+    <div class="card">
         <div class="card-body content">
             <h5 class="card-title">All Groups</h5>
             <ul class="list-unstyled">

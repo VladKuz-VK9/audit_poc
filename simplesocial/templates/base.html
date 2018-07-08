@@ -28,7 +28,7 @@
 <body class="loader">
 
     <!-- NAVBAR -->
-    <nav class="navbar mynav navbar-expand-sm navbar-dark bg-dark" id="navbar">
+    <nav class="navbar mynav navbar-expand-sm" role="navigation" id="navbar">
         <div class="container">
             <a class="navbar-brand mynav" href="{% url 'home' %}">Star Social</a>
             <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
@@ -38,28 +38,28 @@
             <div class="collapse navbar-collapse" id="collapsibleNavId">
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                     {% if user.is_authenticated %}
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{% url 'posts:create' %}">Post <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'groups:all' %}">Groups</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'groups:create' %}">Create Groups</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'accounts:logout' %}">Log Out</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-simple" href="{% url 'posts:create' %}">Post</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-simple" href="{% url 'groups:all' %}">Groups</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-simple" href="{% url 'groups:create' %}">Create Groups</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-simple" href="{% url 'accounts:logout' %}">Log Out</a>
+                    </li>
                     {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'groups:all' %}">Groups</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'accounts:login' %}">Log In</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'accounts:signup' %}">Sign Up</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-simple" href="{% url 'groups:all' %}">Groups</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-simple" href="{% url 'accounts:login' %}">Log In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-simple" href="{% url 'accounts:signup' %}">Sign Up</a>
+                    </li>
                     {% endif %}
                 </ul>
             </div>
@@ -70,10 +70,12 @@
     <div class="container mycontent">
         {% block content %}
 
-            <!-- Anything outside of this will be inherited if you extend! -->
-    
+        <!-- Anything outside of this will be inherited if you extend! -->
+
         {% endblock content %}
     </div>
+
+    <canvas id="canvas"></canvas>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -83,6 +85,7 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
         crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'simplesocial/js/master.js' %}"></script>
 </body>
 
 </html>
