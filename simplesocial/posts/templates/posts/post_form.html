@@ -6,7 +6,7 @@
     <h4>Create a new Post</h4>
     <form id="postForm" action="{% url 'posts:create' %}" method="POST">
         {% csrf_token %}
-        {% boostrap_form form %}
+        {% bootstrap_form form %}
         <button type="submit" class="btn btn-dark btn-lg">Post</button>
     </form>
 {% endblock post_content %}
