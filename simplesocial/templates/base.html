@@ -20,22 +20,60 @@
         media="screen" charset="utf-8">
     <script src="https://cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
     <!-- Custom CSS  -->
-    <!-- <link rel="stylesheet" href="{% static 'css/blog.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'simplesocial/css/master.css' %}">
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat|Russo+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 </head>
 
 <body class="loader">
 
     <!-- NAVBAR -->
-    
+    <nav class="navbar mynav navbar-expand-sm navbar-dark bg-dark" id="navbar">
+        <div class="container">
+            <a class="navbar-brand mynav" href="{% url 'home' %}">Star Social</a>
+            <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Post <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Groups</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Create Groups</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'accounts:logout' %}">Log Out</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Groups</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'accounts:login' %}">Log In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'accounts:signup' %}">Sign Up</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
 
     <!-- CONTENT BLOCK -->
-    {% block content %}
+    <div class="container mycontent">
+        {% block content %}
 
-        <!-- Anything outside of this will be inherited if you extend! -->
-
-    {% endblock content %}
+            <!-- Anything outside of this will be inherited if you extend! -->
+    
+        {% endblock content %}
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
