@@ -1,5 +1,5 @@
 # Social Clone Project
-This is a socual clone project made following the step by step Django Courses
+This is a social clone project made following the step by step Django Courses
 
 ## Thanks
 Thanks to Jose Portilla for this amazing course. 
