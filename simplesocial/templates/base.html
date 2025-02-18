@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load staticfiles %}
+{% load static %}
 <html lang="en">
 
 <head>
@@ -48,7 +48,12 @@
                         <a class="nav-link btn btn-simple" href="{% url 'groups:create' %}">Create Groups</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-simple" href="{% url 'accounts:logout' %}">Log Out</a>
+                        <a href="#" class="nav-link btn btn-simple" onclick="document.getElementById('logout-form').submit();">
+                            Log Out
+                        </a>
+                        <form id="logout-form" method="post" action="{% url 'accounts:logout' %}" style="display: none">
+                            {% csrf_token %}
+                        </form>
                     </li>
                     {% else %}
                     <li class="nav-item">
