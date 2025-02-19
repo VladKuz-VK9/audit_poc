@@ -23,6 +23,7 @@ class AuditLogAdmin(admin.ModelAdmin):
     list_display = ('id', 'username', 'user_id', 'url', 'method', 'params', 'all_db_responses', 'time')
     inlines = (DBResponseInline,)
     actions = ('export_to_csv',)
+    list_filter = ('username',)
 
     def all_db_responses(self, obj):
         model_names = set(obj.db_responses.values_list('model_name', flat=True))
