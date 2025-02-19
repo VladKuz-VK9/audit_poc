@@ -65,8 +65,12 @@ class AuditMiddleware:
 
     @staticmethod
     def _log_db_response(model_object):
+        model_name = f"{model_object._meta.app_label.title()} | {model_object._meta.verbose_name.title()}"
+        model_dict = model_to_dict(model_object)
+        if model_name == "Groups | Group":
+            model_dict['posts'] = list(model_object.posts.values('id', 'user', 'created_at', 'message'))
         return DBResponse(
-            model_name=f"{model_object._meta.app_label.title()} | {model_object._meta.verbose_name.title()}",
+            model_name=model_name,
             object_id=model_object.id,
-            content=model_to_dict(model_object, exclude=['id']),
+            content=model_dict,
         )

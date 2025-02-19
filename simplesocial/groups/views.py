@@ -7,6 +7,7 @@ from django.urls import reverse
 from django.views import generic
 
 from groups.models import Group, GroupMember
+from posts.models import Post
 
 from . import models
 
@@ -20,6 +21,11 @@ class CreateGroup(LoginRequiredMixin, generic.CreateView):
 
 class SingleGroup(generic.DetailView):
     model = Group
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['posts'] = Post.objects.filter(group=self.object)
+        return context
 
 
 class ListGroups(generic.ListView):
